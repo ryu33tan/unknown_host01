@@ -20,7 +20,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
+   
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *Uid = [defaults objectForKey:@"USERID"] ;
     if (Uid == nil) {
@@ -50,6 +50,7 @@
    
     //Mutableを使うのがポイントです
     NSURL *url = [NSURL URLWithString:@"http://localhost:3000/users"];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     //パラメータを作成
@@ -69,6 +70,34 @@
     }
 
    
+}
+
+- (IBAction)inputText:(id)sender {
+    //入力されたテキストをラベルに表示
+    message =  self.myTextField.text;
+    
+    NSLog(@"%@", message);
+    //Mutableを使うのがポイントです
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3000/chats"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    //パラメータを作成
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *Uid = [defaults objectForKey:@"USERID"] ;
+    NSString *body = [NSString stringWithFormat:@"message=%@&uid=%@", message, Uid];
+    NSLog(@"request body:%@",body);
+    //したためたものを使って接続を行う
+    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLConnection *connection;
+    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if (connection) {
+        NSLog(@"main : NSURLConnection create success");
+        
+    } else {
+        NSLog(@"main : connection is nil");
+    }
+
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

@@ -24,16 +24,35 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
-    @chat = Chat.new(chat_params)
+    message = params[:message]
+    uid = params[:uid]
+    user = User.where(:uid=>uid).first
+
+    unless user
+      logger.info("============not founddddddddddddddd #{user.id}")
+      return
+    end
+     logger.info("!!!!!!!!!!!!#{user.id}!!!!!!!!!!!!!!!!")
+    room = Room.where(:user1_id=>user.id).last 
+    logger.info(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ") 
+    unless room
+
+      logger.info("============rooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooom #{user.id}")
+      room = Room.where(:user2_id=>user.id).last  
+      unless room
+        logger.info("44444444444444444444444444444")
+        return
+      end 
+    end
+    logger.info("22222222222222222222222222222222222222222222222222222") 
+  
+    @chat=Chat.create(room_id:  room.id, user_id:  user.id, message:  message)
 
     respond_to do |format|
-      if @chat.save
-        format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @chat }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @chat.errors, status: :unprocessable_entity }
-      end
+      
+      format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
+      format.json { render action: 'show', status: :created, location: @chat }
+      
     end
   end
 

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+     NSString *message;
+}
+
+@property (weak, nonatomic) IBOutlet UITextField *myTextField;
+
+//テキスト入力のメソッド定義
+- (IBAction)inputText:(id)sender;
 
 @end

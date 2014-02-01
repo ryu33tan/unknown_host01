@@ -25,13 +25,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     uid = params[:user][:uid]
-    user = User.where(:uid,uid).first
+    user = User.where(:uid=>uid).first
     if user
 
     else
       user = User.create(user_params)
     end
-    room = Room.where(:user2_id,nil).first
+    room = Room.where(:user2_id=>nil).first
     if room
         room.user2_id=user.id
         room.save

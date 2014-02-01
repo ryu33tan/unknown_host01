@@ -118,9 +118,9 @@
 				87892D97189CF8C600EC0E55 /* AppDelegate.h */,
 				87892D98189CF8C600EC0E55 /* AppDelegate.m */,
 				87892D9A189CF8C600EC0E55 /* Main.storyboard */,
-				87892D9D189CF8C600EC0E55 /* ViewController.h */,
 				87892DBD189CFEA900EC0E55 /* Random.h */,
 				87892DBE189CFEA900EC0E55 /* Random.m */,
+				87892D9D189CF8C600EC0E55 /* ViewController.h */,
 				87892D9E189CF8C600EC0E55 /* ViewController.m */,
 				87892DA0189CF8C600EC0E55 /* Images.xcassets */,
 				87892D8F189CF8C600EC0E55 /* Supporting Files */,
@@ -466,6 +466,7 @@
 				87892DB9189CF8C600EC0E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87892DBA189CF8C600EC0E55 /* Build configuration list for PBXNativeTarget "unknownTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +475,7 @@
 				87892DBC189CF8C600EC0E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
