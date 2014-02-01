@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User1:</strong>
+  <%= @room.user1_id %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @room.Room %>
+</p>
+
+<p>
+  <strong>User2:</strong>
+  <%= @room.user2_id %>
+</p>
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>

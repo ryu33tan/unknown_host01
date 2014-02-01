@@ -24,6 +24,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    uid = params[:user][:uid]
+    user = User.where(:uid,uid)
+    if user
+
+    else
+      user = User.new(user_params)
+    end
+    
     @user = User.new(user_params)
 
     respond_to do |format|
