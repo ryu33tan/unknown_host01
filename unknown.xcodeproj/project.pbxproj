@@ -21,6 +21,7 @@
 		87892DAA189CF8C600EC0E55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87892D8C189CF8C600EC0E55 /* UIKit.framework */; };
 		87892DB2189CF8C600EC0E55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87892DB0189CF8C600EC0E55 /* InfoPlist.strings */; };
 		87892DB4189CF8C600EC0E55 /* unknownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87892DB3189CF8C600EC0E55 /* unknownTests.m */; };
+		87892DBF189CFEA900EC0E55 /* Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 87892DBE189CFEA900EC0E55 /* Random.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		87892DAF189CF8C600EC0E55 /* unknownTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "unknownTests-Info.plist"; sourceTree = "<group>"; };
 		87892DB1189CF8C600EC0E55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		87892DB3189CF8C600EC0E55 /* unknownTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = unknownTests.m; sourceTree = "<group>"; };
+		87892DBD189CFEA900EC0E55 /* Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
+		87892DBE189CFEA900EC0E55 /* Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Random.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				87892D98189CF8C600EC0E55 /* AppDelegate.m */,
 				87892D9A189CF8C600EC0E55 /* Main.storyboard */,
 				87892D9D189CF8C600EC0E55 /* ViewController.h */,
+				87892DBD189CFEA900EC0E55 /* Random.h */,
+				87892DBE189CFEA900EC0E55 /* Random.m */,
 				87892D9E189CF8C600EC0E55 /* ViewController.m */,
 				87892DA0189CF8C600EC0E55 /* Images.xcassets */,
 				87892D8F189CF8C600EC0E55 /* Supporting Files */,
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87892DBF189CFEA900EC0E55 /* Random.m in Sources */,
 				87892D9F189CF8C600EC0E55 /* ViewController.m in Sources */,
 				87892D99189CF8C600EC0E55 /* AppDelegate.m in Sources */,
 				87892D95189CF8C600EC0E55 /* main.m in Sources */,
