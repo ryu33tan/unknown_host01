@@ -1,4 +1,6 @@
 Unknown::Application.routes.draw do
+  resources :chats
+
   resources :rooms
 
   resources :users
