@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "Random.h"
 
-@interface ViewController ()
+@interface ViewController ()  <NSURLConnectionDataDelegate>
 
 @end
 
@@ -21,35 +21,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     
-    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"USERID"] == nil) {
-        
-        NSLog(@"randam ascii string: %@", [Random randAsciiString:32]);
-        
-        
-        
-        [defaults setObject:[Random randAsciiString:32] forKey:@"USERID"];
-        // 送信するリクエストを生成する。
-              //Mutableを使うのがポイントです
-        NSURL *url = [NSURL URLWithString:@"http://example.com"];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        [request setHTTPMethod:@"POST"];
-        //パラメータを作成
-        
-        NSString *body = [Random randAsciiString:32];
-        NSLog(@"request body:%@",body);
-        //したためたものを使って接続を行う
-        request.HTTPBody = [body dataUsingEncoding:NSUTF8StringEncoding];
-        NSURLConnection *connection;
-        connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        
-        if (connection) {
-            NSLog(@"main : NSURLConnection create success");
-        } else {
-            NSLog(@"main : connection is nil");
-        }
+    NSString *Uid = [defaults objectForKey:@"USERID"] ;
+    if (Uid == nil) {
+     NSLog(@"okkk");
        
+        Uid = [Random randAsciiString:32];
+        
+        [defaults setObject:Uid forKey:@"USERID"];
+        // 送信するリクエストを生成する。
+        NSLog(@"UserID: %@", Uid);
+        NSLog(@"UserID: %@", Uid);
+        NSLog(@"okk");
         
         if ( ![defaults synchronize] ) {
             NSLog( @"failed ..." );
@@ -58,11 +41,58 @@
     }else{
         
         NSLog(@"ok");
+        NSLog(@"UserID: %@", Uid);
+        NSLog(@"UserID: %@", Uid);
+        
+
         
     }
+   
+    //Mutableを使うのがポイントです
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3000/users"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    //パラメータを作成
     
+    NSString *body = [NSString stringWithFormat:@"user[uid]=%@", Uid];
+    NSLog(@"request body:%@",body);
+    //したためたものを使って接続を行う
+    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLConnection *connection;
+    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if (connection) {
+        NSLog(@"main : NSURLConnection create success");
+    
+    } else {
+        NSLog(@"main : connection is nil");
+    }
+
    
 }
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"%@", response);
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    
+}
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+    
+}
+- (void)connection:(NSURLConnection *)connection needNewBodyStream:(NSURLRequest *)request{
+    
+}
+
+- (void)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse{
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
